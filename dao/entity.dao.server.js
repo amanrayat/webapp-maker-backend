@@ -9,7 +9,10 @@ createEntity = (entity) => entityModel.findById(entity.id).then(
     }
 );
 
+findAllEntities = () => entityModel.find();
+
 
 module.exports = {
-    createEntity
+    createEntity,
+    findAllEntities
 };
