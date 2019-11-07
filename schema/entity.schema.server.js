@@ -8,3 +8,5 @@ const entitySchema = mongoose.Schema({
 } , {collection : 'entities'});
 
 module.exports = entitySchema;
+
+
