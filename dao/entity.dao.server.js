@@ -10,9 +10,16 @@ createEntity = (entity) => entityModel.findById(entity.id).then(
 );
 
 findAllEntities = () => entityModel.find();
+findEntityById = (id) => entityModel.find({_id:id});
+updateEntityById = (id, entity) => entityModel.update({_id: id}, {$set: entity});
+deleteEntityById = id => entityModel.remove({_id: id});
+
 
 
 module.exports = {
     createEntity,
-    findAllEntities
+    findAllEntities,
+    findEntityById,
+    updateEntityById,
+    deleteEntityById
 };
