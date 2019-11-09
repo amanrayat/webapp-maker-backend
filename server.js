@@ -30,5 +30,6 @@ app.use(function(req, res, next) {
 app.get('/', (req, res) => res.send("The app is up"));
 require('./services/entity.service.server')(app);
 require('./services/user.service.server')(app);
+require('./services/project.service.server')(app);
 
 app.listen( process.env.PORT || 4000);
