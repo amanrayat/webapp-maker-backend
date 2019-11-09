@@ -1,24 +1,24 @@
 const entityModel = require('../model/entity.model.server');
 
-createEntity = (entity) => entityModel.findById(entity.id).then(
+createEntityForProject = (projectId, entity) => entityModel.findById(entity.id).then(
     result => {
         if(!result){
-            return entityModel.create(entity)
+            return entityModel.create({_id : entity.id, projectId : projectId, name : entity.name, label : entity.label})
         }
         return null
     }
 );
 
-findAllEntities = () => entityModel.find();
-findEntityById = (id) => entityModel.find({_id:id});
+findAllEntitiesForProject = projectId => entityModel.find({projectId : projectId});
+findEntityById = (id) => entityModel.find({$and: [{_id: id}]});
+deleteEntityById = (id) => entityModel.remove({_id: id});
 updateEntityById = (id, entity) => entityModel.update({_id: id}, {$set: entity});
-deleteEntityById = id => entityModel.remove({_id: id});
 
 
 
 module.exports = {
-    createEntity,
-    findAllEntities,
+    createEntityForProject,
+    findAllEntitiesForProject,
     findEntityById,
     updateEntityById,
     deleteEntityById

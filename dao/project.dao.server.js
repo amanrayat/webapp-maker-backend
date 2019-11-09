@@ -1,9 +1,5 @@
 const projectModel = require('../model/project.model.server');
 
-// createProjectForUser = (userId, project) => {
-//     return projectModel.create({_id : project.id, userId : userId,projectName : project.projectName})
-// };
-
 createProjectForUser = (userId, project) => projectModel.findById(project.id).then(
     result => {
         if(!result){
