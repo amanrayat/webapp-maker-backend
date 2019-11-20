@@ -26,7 +26,7 @@ module.exports = app => {
     };
 
     const updateFieldById = (req, res) => {
-        fieldDao.updateFieldById(req.params['fieldId'],req.body).then(
+        fieldDao.updateFieldById(req.params['entityId'],req.params['fieldId'],req.body).then(
             result => {
                 res.send(result);
             }
