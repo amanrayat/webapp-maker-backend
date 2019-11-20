@@ -8,3 +8,4 @@ const validationSchema = mongoose.Schema({
 } , {collection : 'validations'});
 
 module.exports = validationSchema;
+ 

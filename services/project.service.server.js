@@ -41,7 +41,6 @@ module.exports = app => {
         )
     };
 
-
     app.post('/api/user/:userId/project', createProjectForUser);
     app.get('/api/user/:userId/project', getAllProjectsOfUser);
     app.get('/api/user/:userId/project/:projectId', getProjectById);

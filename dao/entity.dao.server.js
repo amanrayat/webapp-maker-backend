@@ -9,7 +9,7 @@ createEntityForProject = (projectId, entity) => entityModel.findById(entity.id).
     }
 );
 
-findAllEntitiesForProject = projectId => entityModel.find({projectId : projectId});
+findAllEntitiesForProject = projectId => entityModel.find({projectId : projectId}).populate('projectId').exec();
 findEntityById = (id) => entityModel.find({$and: [{_id: id}]});
 deleteEntityById = (id) => entityModel.remove({_id: id});
 updateEntityById = (id, entity) => entityModel.update({_id: id}, {$set: entity});
