@@ -32,9 +32,8 @@ findAllFieldsForEntity = entityId => fieldModel.find({entityId : entityId});
 findFieldById = (id) => fieldModel.find({$and: [{_id: id}]});
 deleteFieldById = (id) => fieldModel.remove({_id: id});
 updateFieldById = (entityId, id, field) => fieldModel.update({_id: id}, {$set: field}).then(result2 => {
-    console.log('the realut is', result2);
     if(field.relation) {
-        fieldModel.findOneAndUpdate({_id: field.relationField}, {$set:{relation:getFieldForRelation(field.relation),relationEntity:entityId , relationField: id}}, {new: true}, (err, doc) => {
+        fieldModel.findOneAndUpdate({_id: field.relationField}, {$set:{type: 'Relation',relation:getFieldForRelation(field.relation),relationEntity:entityId , relationField: id}}, {new: true}, (err, doc) => {
             if (err) {
                 console.log("Something wrong when updating data!");
             }
