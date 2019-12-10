@@ -29,13 +29,11 @@ module.exports = app => {
     };
 
     const profile = (req, res) => {
-        console.log("the session profile is " , req.session['currentUser']);
         res.send(req.session['currentUser']);
     };
 
     const login = (req, res) => {
         return userDao.findUserByCredentials(req.body.email, req.body.password).then(result => {
-            console.log('the user is ', result);
             if (result && result.length > 0) {
                 req.session['currentUser'] = result;
                 console.log("the session is " , req.session['currentUser']);
